@@ -20,7 +20,7 @@ namespace WorldCup
         public bool penalty;
         public string result;
         public string matchType;
-        Random rnd = new Random();
+        private static Random rnd = new Random();
 
         public Match()
         {
@@ -195,6 +195,8 @@ namespace WorldCup
         {
             randomRedCard();
             randomYellowCard();
+            team1PlayersScore();
+            team2PlayersScore();
             this.team1Score = 0;
             this.team2Score = 0;
             this.team1Score += rnd.Next(0, 5);
@@ -210,9 +212,12 @@ namespace WorldCup
         {
             updateTeam1Score();
             updateTeam2Score();
+            this.team1.getgoalDeficit();
+            this.team2.getgoalDeficit();
+
             if (this.team1Score == this.team2Score)
             {
-                this.result = "Draw " + team2Score + " - "+ team1Score;
+                this.result = team1.teamName + " Draw " + team1Score + " - " + team2Score + " vs " + team2.teamName;
                 if (matchType == "1/32")
                 {
                     this.team1.totalPoint += 1;
@@ -254,6 +259,7 @@ namespace WorldCup
             randomYellowCard();
             this.team1Score += rnd.Next(0, 3);
             this.team2Score += rnd.Next(0, 3);
+            
             if (this.team1Score == this.team2Score)
             {
                 this.team1Score += rnd.Next(0, 3);

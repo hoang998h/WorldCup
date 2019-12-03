@@ -21,13 +21,30 @@ namespace WorldCup
         {
             this.groupName = groupName;
         }
-        public void setTeamList()
+        public void setGroupPoint(List<int> listPoint)
         {
             for (int i = 0; i < 4; i++)
             {
-                Team team = new Team();
-                team.setteamName("team" + (i+1) + " ");
-                this.teamList.Add(team);
+                this.teamList[i].totalPoint = listPoint[i];
+            }
+        }
+        public void setGroupGoalDeficit(List<int> listDeficit)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                this.teamList[i].goalDeficit = listDeficit[i];
+            }
+        }
+        public void setTeamList()
+        {
+            if (this.teamList.Count == 0)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    Team team = new Team();
+                    team.setteamName("team " + (i + 1));
+                    this.teamList.Add(team);
+                }
             }
         }
         public string getGroupName()
@@ -44,6 +61,7 @@ namespace WorldCup
         }
         public void playFirstRound()
         {
+            this.result.Clear();
             this.result.Add("Luot di vong bang " + this.groupName);
             for (int i = 0; i < 3; i++)
             {
@@ -86,25 +104,34 @@ namespace WorldCup
             }
             return topPoint;
         }
-        //public Team getTop1Team()
-        //{
-        //    Team topTeam = new Team();
-        //    List<Team> listOfTopTeam = new List<Team>();
-            
-        //    foreach(Team t in this.teamList)
-        //    {
-        //        if(t.totalPoint==getTopPoint())
-        //        {
-        //            listOfTopTeam.Add(t);
-        //        }
-        //    }
-        //    if(listOfTopTeam.Count>1)
-        //    {
-        //        foreach(Team t in listOfTopTeam)
-        //        {
-
-        //        }
-        //    }
-        //}
+        public List<Team> getTop1Team()
+        {
+            Team topTeam = new Team();
+            List<Team> listOfTopTeam = new List<Team>();
+            foreach(Team t in this.teamList)//lay cac doi co diem cao nhat vao list
+            {
+                if(t.totalPoint==getTopPoint())
+                {
+                    listOfTopTeam.Add(t);
+                }
+            }
+            if(listOfTopTeam.Count>1) // neu so doi co diem cao nhat nhieu hon 1 xet hieu so
+            {
+                for(int i=0;i<listOfTopTeam.Count;i++) // sap xep doi co hieu so lon hon o vi tri cao hon
+                {
+                    for (int j = i + 1; j < listOfTopTeam.Count; j++)
+                    {
+                        if (listOfTopTeam[i].goalDeficit < listOfTopTeam[j].goalDeficit)
+                        {
+                            Team team = new Team();
+                            team = listOfTopTeam[i];
+                            listOfTopTeam[i] = listOfTopTeam[i + 1];
+                            listOfTopTeam[i + 1] = team;
+                        }
+                    }
+                }
+            }
+            return listOfTopTeam;
+        }
     }
 }

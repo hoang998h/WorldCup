@@ -16,6 +16,7 @@ namespace WorldCup
         public int totalPoint;
         public int totalGoal;
         public int totalLossGoal;
+        public int goalDeficit;
 
         public Team()
         {
@@ -25,17 +26,11 @@ namespace WorldCup
             this.doctorName = "";
             this.players = new List<Player>();
             this.totalPoint = 0;
+            this.totalGoal = 0;
+            this.totalLossGoal = 0;
+            this.goalDeficit = 0;
         }
 
-        public Team(string teamName, string coachName, List<String> assistants, string doctorName, List<Player> players, int totalPoint)
-        {
-            this.teamName = teamName;
-            this.coachName = coachName;
-            this.assistants = assistants;
-            this.doctorName = doctorName;
-            this.players = players;
-            this.totalPoint = totalPoint;
-        }
         public void setteamName(string teamName)
         {
             if(teamName=="")
@@ -116,6 +111,11 @@ namespace WorldCup
         public int gettotalLossGoal()
         {
             return this.totalLossGoal;
+        }
+        public int getgoalDeficit()
+        {
+            this.goalDeficit = totalGoal - totalLossGoal;
+            return this.goalDeficit;
         }
         public void addteamGoal(int goal)
         {
