@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldCup", "WorldCup\WorldCup.csproj", "{A43E8C20-1CE3-43A2-9F02-FA43F428E77B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "TestTeam\UnitTest.csproj", "{B193338B-2B3D-4509-A1BC-6CDD9925E1B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A43E8C20-1CE3-43A2-9F02-FA43F428E77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A43E8C20-1CE3-43A2-9F02-FA43F428E77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A43E8C20-1CE3-43A2-9F02-FA43F428E77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A43E8C20-1CE3-43A2-9F02-FA43F428E77B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B193338B-2B3D-4509-A1BC-6CDD9925E1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B193338B-2B3D-4509-A1BC-6CDD9925E1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B193338B-2B3D-4509-A1BC-6CDD9925E1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B193338B-2B3D-4509-A1BC-6CDD9925E1B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBFAE525-B398-462E-A896-F7D517C86F8C}
+	EndGlobalSection
+EndGlobal

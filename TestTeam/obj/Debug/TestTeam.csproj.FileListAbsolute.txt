@@ -1,0 +1,17 @@
+F:\C# Project\WorldCup\TestTeam\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+F:\C# Project\WorldCup\TestTeam\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+F:\C# Project\WorldCup\TestTeam\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+F:\C# Project\WorldCup\TestTeam\bin\Debug\TestTeam.dll
+F:\C# Project\WorldCup\TestTeam\bin\Debug\TestTeam.pdb
+F:\C# Project\WorldCup\TestTeam\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+F:\C# Project\WorldCup\TestTeam\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+F:\C# Project\WorldCup\TestTeam\bin\Debug\WorldCup.exe
+F:\C# Project\WorldCup\TestTeam\bin\Debug\WorldCup.pdb
+F:\C# Project\WorldCup\TestTeam\bin\Debug\WorldCup.exe.config
+F:\C# Project\WorldCup\TestTeam\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+F:\C# Project\WorldCup\TestTeam\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+F:\C# Project\WorldCup\TestTeam\obj\Debug\TestTeam.csprojAssemblyReference.cache
+F:\C# Project\WorldCup\TestTeam\obj\Debug\TestTeam.csproj.CoreCompileInputs.cache
+F:\C# Project\WorldCup\TestTeam\obj\Debug\TestTeam.csproj.CopyComplete
+F:\C# Project\WorldCup\TestTeam\obj\Debug\TestTeam.dll
+F:\C# Project\WorldCup\TestTeam\obj\Debug\TestTeam.pdb

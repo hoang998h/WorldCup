@@ -1,0 +1,21 @@
+F:\C# Project\WorldCup\WorldCup\bin\Debug\WorldCup.exe.config
+F:\C# Project\WorldCup\WorldCup\bin\Debug\WorldCup.exe
+F:\C# Project\WorldCup\WorldCup\bin\Debug\WorldCup.pdb
+F:\C# Project\WorldCup\WorldCup\obj\Debug\WorldCup.csprojAssemblyReference.cache
+F:\C# Project\WorldCup\WorldCup\obj\Debug\WorldCup.csproj.CoreCompileInputs.cache
+F:\C# Project\WorldCup\WorldCup\obj\Debug\WorldCup.exe
+F:\C# Project\WorldCup\WorldCup\obj\Debug\WorldCup.pdb
+F:\Projects\WorldCup\WorldCup\bin\Debug\WorldCup.exe.config
+F:\Projects\WorldCup\WorldCup\bin\Debug\WorldCup.exe
+F:\Projects\WorldCup\WorldCup\bin\Debug\WorldCup.pdb
+F:\Projects\WorldCup\WorldCup\obj\Debug\WorldCup.csprojAssemblyReference.cache
+F:\Projects\WorldCup\WorldCup\obj\Debug\WorldCup.csproj.CoreCompileInputs.cache
+F:\Projects\WorldCup\WorldCup\obj\Debug\WorldCup.exe
+F:\Projects\WorldCup\WorldCup\obj\Debug\WorldCup.pdb
+F:\Projects\WorldCup\WorldCup\WorldCup\bin\Debug\WorldCup.exe.config
+F:\Projects\WorldCup\WorldCup\WorldCup\bin\Debug\WorldCup.exe
+F:\Projects\WorldCup\WorldCup\WorldCup\bin\Debug\WorldCup.pdb
+F:\Projects\WorldCup\WorldCup\WorldCup\obj\Debug\WorldCup.csprojAssemblyReference.cache
+F:\Projects\WorldCup\WorldCup\WorldCup\obj\Debug\WorldCup.csproj.CoreCompileInputs.cache
+F:\Projects\WorldCup\WorldCup\WorldCup\obj\Debug\WorldCup.exe
+F:\Projects\WorldCup\WorldCup\WorldCup\obj\Debug\WorldCup.pdb
