@@ -264,6 +264,8 @@ namespace TestTeam
         [TestMethod]
         public void matchResultNotNull()
         {
+            match.setTeam1Players();
+            match.setTeam2Players();
             string result = match.playMatch(); ;
             Assert.IsNotNull(result);
         }
@@ -272,6 +274,8 @@ namespace TestTeam
         {
             match.setTeam1Score(2);
             match.setTeam2Score(2);
+            match.setTeam1Players();
+            match.setTeam2Players();
             string result = match.matchResult();
             Assert.IsTrue(result.CompareTo(match.team1.getteamName() + " Draw " + match.getTeam1Score() + " - " + match.getTeam2Score() + " vs " + match.team2.teamName) ==0);
         }
@@ -282,6 +286,8 @@ namespace TestTeam
             match.setTeam2Score(2);
             match.team1.setteamName("team1");
             match.team2.setteamName("team2");
+            match.setTeam1Players();
+            match.setTeam2Players();
             string result = match.matchResult();
             Assert.IsTrue(result.CompareTo(match.team1.getteamName() + " Win " + match.getTeam1Score() + " - " + match.getTeam2Score() + " vs " + match.team2.teamName) == 0);
         }
@@ -292,6 +298,8 @@ namespace TestTeam
             match.setTeam2Score(3);
             match.team1.setteamName("team1");
             match.team2.setteamName("team2");
+            match.setTeam1Players();
+            match.setTeam2Players();
             string result = match.matchResult();
             Assert.IsTrue(result.CompareTo(match.team2.getteamName() + " Win " + match.getTeam2Score() + " - " + match.getTeam1Score() + " vs " + match.team1.teamName)==0);
         }
@@ -337,6 +345,7 @@ namespace TestTeam
         public void team1PlayerScore()
         {
             match.setTeam1Players();
+            match.setTeam2Players();
             match.playMatch();
             bool result = match.team1PlayersScore();
             if (match.team1Score>0)
@@ -351,6 +360,7 @@ namespace TestTeam
         [TestMethod]
         public void team2PlayerScore()
         {
+            match.setTeam1Players();
             match.setTeam2Players();
             match.playMatch();
             bool result = match.team2PlayersScore();
@@ -370,6 +380,8 @@ namespace TestTeam
             match.setTeam2Score(0);
             match.team1.setteamName("team1");
             match.team2.setteamName("team2");
+            match.setTeam1Players();
+            match.setTeam2Players();
             int team1Point = match.team1.totalPoint;
             match.matchResult();
             int team1PointAfterWin = match.team1.totalPoint;
@@ -382,6 +394,8 @@ namespace TestTeam
             match.setTeam2Score(5);
             match.team1.setteamName("team1");
             match.team2.setteamName("team2");
+            match.setTeam1Players();
+            match.setTeam2Players();
             int team2Point = match.team2.totalPoint;
             match.matchResult();
             int team2PointAfterWin = match.team2.totalPoint;
@@ -394,6 +408,8 @@ namespace TestTeam
             match.setTeam2Score(1);
             match.team1.setteamName("team1");
             match.team2.setteamName("team2");
+            match.setTeam1Players();
+            match.setTeam2Players();
             int team1Point = match.team1.totalPoint;
             match.matchResult();
             int team1PointAfterWin = match.team1.totalPoint;
@@ -406,6 +422,8 @@ namespace TestTeam
             match.setTeam2Score(1);
             match.team1.setteamName("team1");
             match.team2.setteamName("team2");
+            match.setTeam1Players();
+            match.setTeam2Players();
             int team2Point = match.team2.totalPoint;
             match.matchResult();
             int team2PointAfterWin = match.team2.totalPoint;
@@ -418,6 +436,8 @@ namespace TestTeam
             match.setTeam2Score(1);
             match.team1.setteamName("team1");
             match.team2.setteamName("team2");
+            match.setTeam1Players();
+            match.setTeam2Players();
             int team1Point = match.team1.totalPoint;
             match.matchResult();
             int team1PointAfterWin = match.team1.totalPoint;
@@ -431,6 +451,8 @@ namespace TestTeam
 
             match.team1.setteamName("team1");
             match.team2.setteamName("team2");
+            match.setTeam1Players();
+            match.setTeam2Players();
             int team2Point = match.team2.totalPoint;
             match.matchResult();
             int team2PointAfterWin = match.team2.totalPoint;

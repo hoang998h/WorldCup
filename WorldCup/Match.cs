@@ -193,14 +193,13 @@ namespace WorldCup
         }
         public string playMatch()
         {
-            randomRedCard();
-            randomYellowCard();
-            team1PlayersScore();
-            team2PlayersScore();
             this.team1Score = 0;
             this.team2Score = 0;
             this.team1Score += rnd.Next(0, 5);
             this.team2Score += rnd.Next(0, 5);
+            randomRedCard();
+            randomYellowCard();
+            
             if (checksubMatch() && matchType.CompareTo("1/32") != 0) 
             {
                 return playSubHalf();
@@ -212,6 +211,8 @@ namespace WorldCup
         {
             updateTeam1Score();
             updateTeam2Score();
+            team1PlayersScore();
+            team2PlayersScore();
             this.team1.getgoalDeficit();
             this.team2.getgoalDeficit();
 
