@@ -21,14 +21,6 @@ namespace WorldCup
             this.redcard = 0;
             this.yellowcard = 0;
         }
-        public Player(int number, string name,int goal,int redcard,int yellowcard)
-        {
-            this.number = number;
-            this.name = name;
-            this.goal = goal;
-            this.redcard = redcard;
-            this.yellowcard = yellowcard;
-        }
         public void setPlayerName(string name)
         {
             this.name = name;
@@ -65,7 +57,7 @@ namespace WorldCup
 
         public int getPlayerNumber()
         {
-            if(this.number <= 0)
+            if(this.number < 0)
             {
                 this.number = 99;
             }

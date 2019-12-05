@@ -27,11 +27,25 @@ namespace TestTeam
             Assert.AreNotSame("", name);
         }
         [TestMethod]
-        public void playerNumberIsNotNegative()
+        public void negativePlayerNumber()
         {
             player.setPlayerNumber(-5);
             int number = player.getPlayerNumber();
             Assert.IsTrue(number > 0,"So cua cau thu lon hon 0");
+        }
+        [TestMethod]
+        public void positivePlayerNumber()
+        {
+            player.setPlayerNumber(5);
+            int number = player.getPlayerNumber();
+            Assert.AreEqual(5, number);
+        }
+        [TestMethod]
+        public void zeroPlayerNumber()
+        {
+            player.setPlayerNumber(0);
+            int number = player.getPlayerNumber();
+            Assert.AreEqual(0, number);
         }
         [TestMethod]
         public void playerGoalIsNotNegative()
@@ -41,6 +55,20 @@ namespace TestTeam
             Assert.IsTrue(goal >= 0, "So cua cau thu lon hon 0");
         }
         [TestMethod]
+        public void playerGoalIsPositive()
+        {
+            player.setGoal(5);
+            int goal = player.getPlayerGoal();
+            Assert.AreEqual(5, goal);
+        }
+        [TestMethod]
+        public void playerGoalIsZero()
+        {
+            player.setGoal(0);
+            int goal = player.getPlayerGoal();
+            Assert.AreEqual(0, goal);
+        }
+        [TestMethod]
         public void playerRedCardIsNotNegative()
         {
             player.setRedCard(-1);
@@ -48,11 +76,39 @@ namespace TestTeam
             Assert.IsTrue(redCard >= 0, "So cua cau thu lon hon 0");
         }
         [TestMethod]
+        public void playerRedCardIsPositive()
+        {
+            player.setRedCard(1);
+            int redCard = player.getPlayerRedCard();
+            Assert.AreEqual(1, redCard);
+        }
+        [TestMethod]
+        public void playerRedCardIsZero()
+        {
+            player.setRedCard(0);
+            int redCard = player.getPlayerRedCard();
+            Assert.AreEqual(0, redCard);
+        }
+        [TestMethod]
         public void playerYellowCardIsNotNegative()
         {
             player.setYellowCard(-3);
             int yellowCard = player.getPlayerYellowCard();
             Assert.IsTrue(yellowCard >= 0, "So cua cau thu lon hon 0");
+        }
+        [TestMethod]
+        public void playerYellowCardIsPositive()
+        {
+            player.setYellowCard(3);
+            int yellowCard = player.getPlayerYellowCard();
+            Assert.AreEqual(3,yellowCard);
+        }
+        [TestMethod]
+        public void playerYellowCardIsZero()
+        {
+            player.setYellowCard(0);
+            int yellowCard = player.getPlayerYellowCard();
+            Assert.AreEqual(0, yellowCard);
         }
         [TestMethod]
         public void player2YellowTo1RedCard()
@@ -83,6 +139,13 @@ namespace TestTeam
             Assert.AreNotEqual(0, length);
         }
         [TestMethod]
+        public void teamNameIsSomeThing()
+        {
+            team.setteamName("team1");
+            string teamName = team.getteamName();
+            Assert.AreSame("team1", teamName);
+        }
+        [TestMethod]
         public void coachNameIsNotNull()
         {
             string coachName = team.getcoachName();
@@ -97,11 +160,19 @@ namespace TestTeam
             Assert.AreNotEqual(0, length);
         }
         [TestMethod]
+        public void coachNameIsSomeThing()
+        {
+            team.setcoachName("Park");
+            string coachName = team.getcoachName();
+            Assert.AreSame("Park", coachName);
+        }
+        [TestMethod]
         public void numofAssistantsSmallerThan4()
         {
             int numofAssistants = team.getnumofAssitants();
             Assert.IsTrue(numofAssistants <= 3, "So luong tro ly nho hon hoac bang 3");
         }
+        [TestMethod]
         public void numofAssistantsGreaterThan0()
         {
             int numofAssistants = team.getnumofAssitants();
@@ -122,6 +193,13 @@ namespace TestTeam
             Assert.AreNotEqual(0, length);
         }
         [TestMethod]
+        public void doctorNameIsSomeThing()
+        {
+            team.setdoctorName("doc");
+            string doctorName = team.getdoctorName();
+            Assert.AreSame("doc", doctorName);
+        }
+        [TestMethod]
         public void numofPlayersLessThan23()
         {
             int numofAssistants = team.getnumofPlayers();
@@ -139,6 +217,12 @@ namespace TestTeam
         {
             int point = team.gettotalPoint();
             Assert.IsTrue(point >= 0, "Diem cua doi bong duong");
+        }
+        [TestMethod]
+        public void totalPointNotHigherThan18()
+        {
+            int point = team.gettotalPoint();
+            Assert.IsTrue(point <=18, "Diem cua nho hon 18");
         }
         [TestMethod]
         public void totalGoalNotNegative()
