@@ -218,7 +218,7 @@ namespace WorldCup
 
             if (this.team1Score == this.team2Score)
             {
-                this.result = team1.teamName + " Draw " + team1Score + " - " + team2Score + " vs " + team2.teamName;
+                this.result = team1.teamName + " Draw " + " vs " + team2.teamName + " " + team1Score + " - " + team2Score ;
                 if (matchType == "1/32")
                 {
                     this.team1.totalPoint += 1;
@@ -227,7 +227,7 @@ namespace WorldCup
             }
             else if (this.team1Score > this.team2Score)
             {
-                this.result = team1.teamName + " Win " + team1Score + " - " + team2Score + " vs " + team2.teamName ;
+                this.result = team1.teamName + " Win " + " vs " + team2.teamName + " " + team1Score + " - " + team2Score ;
                 if (matchType == "1/32")
                 {
                     this.team1.totalPoint += 3;
@@ -235,7 +235,7 @@ namespace WorldCup
             }
             else
             {
-                this.result = team2.teamName + " Win " + team2Score + " - " + team1Score + " vs " + team1.teamName ;
+                this.result = team2.teamName + " Win " + " vs " + team1.teamName + " "+ team2Score + " - " + team1Score;
                 if (matchType == "1/32")
                 {
                     this.team2.totalPoint += 3;

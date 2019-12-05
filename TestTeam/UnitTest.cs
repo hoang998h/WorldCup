@@ -176,7 +176,27 @@ namespace TestTeam
             int goalDeficit = team.getgoalDeficit();
             Assert.AreEqual(0, goalDeficit);
         }
-
+        [TestMethod]
+        public void negativeNumOfCard()
+        {
+            team.setTeamCard(-5);
+            int numOfTeamCard = team.getNumofCard();
+            Assert.AreEqual(0, numOfTeamCard);
+        }
+        [TestMethod]
+        public void positiveNumOfCard()
+        {
+            team.setTeamCard(5);
+            int numOfTeamCard = team.getNumofCard();
+            Assert.AreEqual(5, numOfTeamCard);
+        }
+        [TestMethod]
+        public void zeroNumOfCard()
+        {
+            team.setTeamCard(0);
+            int numOfTeamCard = team.getNumofCard();
+            Assert.AreEqual(0, numOfTeamCard);
+        }
         //Match test
 
 
@@ -277,7 +297,7 @@ namespace TestTeam
             match.setTeam1Players();
             match.setTeam2Players();
             string result = match.matchResult();
-            Assert.IsTrue(result.CompareTo(match.team1.getteamName() + " Draw " + match.getTeam1Score() + " - " + match.getTeam2Score() + " vs " + match.team2.teamName) ==0);
+            Assert.IsTrue(result.CompareTo(match.team1.getteamName() + " Draw "  + " vs " + match.team2.teamName + " "  + match.getTeam1Score() + " - " + match.getTeam2Score()) ==0);
         }
         [TestMethod]
         public void matchResultTeam1Win()
@@ -289,7 +309,7 @@ namespace TestTeam
             match.setTeam1Players();
             match.setTeam2Players();
             string result = match.matchResult();
-            Assert.IsTrue(result.CompareTo(match.team1.getteamName() + " Win " + match.getTeam1Score() + " - " + match.getTeam2Score() + " vs " + match.team2.teamName) == 0);
+            Assert.IsTrue(result.CompareTo(match.team1.getteamName() + " Win "  + " vs " + match.team2.teamName + " "  + match.getTeam1Score() + " - " + match.getTeam2Score()) == 0);
         }
         [TestMethod]
         public void matchResultTeam2Win()
@@ -301,7 +321,7 @@ namespace TestTeam
             match.setTeam1Players();
             match.setTeam2Players();
             string result = match.matchResult();
-            Assert.IsTrue(result.CompareTo(match.team2.getteamName() + " Win " + match.getTeam2Score() + " - " + match.getTeam1Score() + " vs " + match.team1.teamName)==0);
+            Assert.IsTrue(result.CompareTo(match.team2.getteamName() + " Win "  + " vs " + match.team1.teamName + " " + match.getTeam2Score() + " - " + match.getTeam1Score()) ==0);
         }
         [TestMethod]
         public void checkSubmatch()
@@ -564,33 +584,151 @@ namespace TestTeam
             Assert.IsTrue(numOfTeamList == 4);
         }
         [TestMethod]
-        public void getTopPoint()
+        public void getTop4Point()
         {
             group.setTeamList();
             List<int> listPoint = new List<int> {3,7,8,10 };
             group.setGroupPoint(listPoint);
-            int topPoint = group.getTopPoint();
+            int topPoint = group.getTopNPoint(0);
+            Assert.AreEqual(3, topPoint);
+        }
+        [TestMethod]
+        public void getTop3Point()
+        {
+            group.setTeamList();
+            List<int> listPoint = new List<int> { 3, 7, 8, 10 };
+            group.setGroupPoint(listPoint);
+            int topPoint = group.getTopNPoint(1);
+            Assert.AreEqual(7, topPoint);
+        }
+        [TestMethod]
+        public void getTop2Point()
+        {
+            group.setTeamList();
+            List<int> listPoint = new List<int> { 3, 7, 8, 10 };
+            group.setGroupPoint(listPoint);
+            int topPoint = group.getTopNPoint(2);
+            Assert.AreEqual(8, topPoint);
+        }
+        [TestMethod]
+        public void getTopPoint()
+        {
+            group.setTeamList();
+            List<int> listPoint = new List<int> { 3, 7, 8, 10 };
+            group.setGroupPoint(listPoint);
+            int topPoint = group.getTopNPoint(3);
             Assert.AreEqual(10, topPoint);
         }
+
+        [TestMethod]
+        public void getTo4pGoalDeficit()
+        {
+            group.setTeamList();
+            List<int> listDeficit = new List<int> { 2, 3, -5, 8 };
+            group.setGroupGoalDeficit(listDeficit);
+            int topDeficit = group.getTopNGoalDeficit(group.teamList,0);
+            Assert.AreEqual(-5, topDeficit);
+        }
+        [TestMethod]
+        public void getTop3GoalDeficit()
+        {
+            group.setTeamList();
+            List<int> listDeficit = new List<int> { 2, 3, -5, 8 };
+            group.setGroupGoalDeficit(listDeficit);
+            int topDeficit = group.getTopNGoalDeficit(group.teamList, 1);
+            Assert.AreEqual(2, topDeficit);
+        }
+        [TestMethod]
+        public void getTop2GoalDeficit()
+        {
+            group.setTeamList();
+            List<int> listDeficit = new List<int> { 2, 3, -5, 8 };
+            group.setGroupGoalDeficit(listDeficit);
+            int topDeficit = group.getTopNGoalDeficit(group.teamList, 2);
+            Assert.AreEqual(3, topDeficit);
+        }
+        [TestMethod]
+        public void getTopGoalDeficit()
+        {
+            group.setTeamList();
+            List<int> listDeficit = new List<int> { 2, 3, -5, 8 };
+            group.setGroupGoalDeficit(listDeficit);
+            int topDeficit = group.getTopNGoalDeficit(group.teamList, 3);
+            Assert.AreEqual(8, topDeficit);
+        }
+        [TestMethod]
+        public void getTopCard()
+        {
+            List<int> listCard = new List<int> { 3, 4, 7, 9 };
+            group.setTeamList();
+            group.setTeamCard(listCard);
+            int numOfCard=group.getTopNCard(group.teamList,3);
+            Assert.AreEqual(9, numOfCard);
+        }
+        [TestMethod]
+        public void getTop2Card()
+        {
+            List<int> listCard = new List<int> { 3, 4, 7, 9 };
+            group.setTeamList();
+            group.setTeamCard(listCard);
+            int numOfCard = group.getTopNCard(group.teamList, 2);
+            Assert.AreEqual(7, numOfCard);
+        }
+        [TestMethod]
+        public void getTop3Card()
+        {
+            List<int> listCard = new List<int> { 3, 4, 7, 9 };
+            group.setTeamList();
+            group.setTeamCard(listCard);
+            int numOfCard = group.getTopNCard(group.teamList, 1);
+            Assert.AreEqual(4, numOfCard);
+        }
+        [TestMethod]
+        public void getTop4Card()
+        {
+            group.setTeamList();
+            List<int> listCard = new List<int> { 3, 4, 7, 9 };
+            group.setTeamCard(listCard);
+            int numOfCard = group.getTopNCard(group.teamList, 0);
+            Assert.AreEqual(3, numOfCard);
+        }
+
+
         [TestMethod]
         public void getTop1TeamWhenPointAreNotTheSame()
         {
             group.setTeamList();
             List<int> listPoint = new List<int> { 3, 7, 8, 10 };
             group.setGroupPoint(listPoint);
-            List<Team> listTeam = group.getTop1Team();
-            Assert.AreEqual("team 4", listTeam[0].teamName);
+            List<Team> top1Team = group.getTopTeam();
+            Assert.AreEqual("team 4", top1Team[0].teamName);
         }
         [TestMethod]
-        public void getTop1TeamWhenPointAreTheSame()
+        public void getTop1TeamWithGoalDeficit()
         {
             group.setTeamList();
             List<int> listPoint = new List<int> { 3, 10, 10, 10 };
-            List<int> listDeficit = new List<int> { 2, -1, 4, -7 };
+            List<int> listDeficit = new List<int> { 8, 3, 9, -7 };
             group.setGroupPoint(listPoint);
             group.setGroupGoalDeficit(listDeficit);
-            List<Team> listTeam = group.getTop1Team();
-            Assert.AreEqual("team 3", listTeam[0].teamName);
+            List<Team> top1Team = group.getTopTeam();
+            Assert.AreEqual("team 3", top1Team[0].teamName);
         }
+        [TestMethod]
+        public void getTop1TeamWithNumOfCard()
+        {
+            group.setTeamList();
+            List<int> listPoint = new List<int> { 3, 10, 10, 10 };
+            List<int> listDeficit = new List<int> { 2, 10, 10,10 };
+            List<int> listCard = new List<int> { 3, 10, 7, 2 };
+            group.setTeamCard(listCard);
+            group.setGroupPoint(listPoint);
+            group.setGroupGoalDeficit(listDeficit);
+            List<Team> top1Team = group.getTopTeam();
+            Assert.AreEqual("team 4", top1Team[0].teamName);
+        }
+
+
+
     }
 }

@@ -17,7 +17,7 @@ namespace WorldCup
         public int totalGoal;
         public int totalLossGoal;
         public int goalDeficit;
-
+        public int numOfCard;
         public Team()
         {
             this.teamName = "";
@@ -29,6 +29,7 @@ namespace WorldCup
             this.totalGoal = 0;
             this.totalLossGoal = 0;
             this.goalDeficit = 0;
+            this.numOfCard = 0;
         }
 
         public void setteamName(string teamName)
@@ -58,6 +59,14 @@ namespace WorldCup
         public void settotalGoal(int totalGoal)
         {
             this.totalGoal = totalGoal;
+        }
+        public void setTeamCard(int totalCard)
+        {
+            if(totalCard<0)
+            {
+                totalCard = 0;
+            }
+            this.numOfCard = totalCard;
         }
         public void settotalLossGoal(int totalLossGoal)
         {
@@ -116,6 +125,14 @@ namespace WorldCup
         {
             this.goalDeficit = totalGoal - totalLossGoal;
             return this.goalDeficit;
+        }
+        public int getNumofCard()
+        {
+            foreach (Player p in players)
+            {
+                this.numOfCard += p.redcard * 2 + p.yellowcard;
+            }
+            return this.numOfCard;
         }
         public void addteamGoal(int goal)
         {

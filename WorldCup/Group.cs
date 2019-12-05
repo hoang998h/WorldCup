@@ -47,9 +47,16 @@ namespace WorldCup
                 }
             }
         }
+        public void setTeamCard(List<int> listCard)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                this.teamList[i].setTeamCard(listCard[i]);
+            }
+        }
         public string getGroupName()
         {
-            if(this.groupName=="")
+            if (this.groupName == "")
             {
                 this.groupName = "A";
             }
@@ -65,7 +72,7 @@ namespace WorldCup
             this.result.Add("Luot di vong bang " + this.groupName);
             for (int i = 0; i < 3; i++)
             {
-                for (int j = i+1; j < 4; j++)
+                for (int j = i + 1; j < 4; j++)
                 {
                     Match match = new Match();
                     match.setTeam1(teamList[i]);
@@ -92,46 +99,116 @@ namespace WorldCup
                 }
             }
         }
-        public int getTopPoint()
+        public int getTopNPoint(int n)
         {
-            int topPoint = 0;
-            foreach(Team t in this.teamList)
+            List<int> topNPoint = new List<int>();
+            foreach (Team t in this.teamList)
             {
-                if (t.totalPoint>topPoint)
-                {
-                    topPoint = t.totalPoint;
-                }
+                topNPoint.Add(t.totalPoint);
             }
-            return topPoint;
+            topNPoint.Sort();
+            return topNPoint[n];
         }
-        public List<Team> getTop1Team()
+        public int getTopNGoalDeficit(List<Team> listOfTopTeam, int n)
+        {
+            List<int> teamGoalDeficit = new List<int>();
+            foreach (Team t in listOfTopTeam)
+            {
+                teamGoalDeficit.Add(t.goalDeficit);
+            }
+            teamGoalDeficit.Sort();
+            return teamGoalDeficit[n];
+        }
+        public int getTopNCard(List<Team> listOfTopTeam, int n)
+        {
+            List<int> teamCard = new List<int>();
+            foreach (Team t in listOfTopTeam)
+            {
+                int numOfCard = t.getNumofCard();
+                teamCard.Add(numOfCard);
+            }
+            teamCard.Sort();
+            return teamCard[n];
+        }
+        public int getNumOfCard(Team team)
+        {
+            int numOfCard = 0;
+            foreach (Player p in team.players)
+            {
+                numOfCard += p.yellowcard + p.redcard * 2;
+            }
+            return numOfCard;
+        }
+        public List<Team> getTopTeam()
         {
             Team topTeam = new Team();
-            List<Team> listOfTopTeam = new List<Team>();
-            foreach(Team t in this.teamList)//lay cac doi co diem cao nhat vao list
+            int numOfTopTeam = 0;
+            List<Team> listOfTopTeam = this.teamList;
+            listOfTopTeam= listOfTopTeam.OrderByDescending(t => t.totalPoint).ToList();
+            foreach (Team t in listOfTopTeam)
             {
-                if(t.totalPoint==getTopPoint())
+                if (t.totalPoint == getTopNPoint(3))
                 {
-                    listOfTopTeam.Add(t);
+                    numOfTopTeam++;
                 }
             }
-            if(listOfTopTeam.Count>1) // neu so doi co diem cao nhat nhieu hon 1 xet hieu so
+            if (numOfTopTeam > 1)
             {
-                for(int i=0;i<listOfTopTeam.Count;i++) // sap xep doi co hieu so lon hon o vi tri cao hon
+                numOfTopTeam = 0;
+                listOfTopTeam = listOfTopTeam.Where(t => t.totalPoint == getTopNPoint(3)).ToList();
+                listOfTopTeam = listOfTopTeam.OrderByDescending(t => t.goalDeficit).ToList();
+                foreach (Team t in listOfTopTeam)
                 {
-                    for (int j = i + 1; j < listOfTopTeam.Count; j++)
+                    if (t.goalDeficit == getTopNGoalDeficit(listOfTopTeam, listOfTopTeam.Count - 1))
                     {
-                        if (listOfTopTeam[i].goalDeficit < listOfTopTeam[j].goalDeficit)
+                        numOfTopTeam++;
+                    }
+                }
+                if (numOfTopTeam > 1)
+                {
+                    numOfTopTeam = 0;
+                    listOfTopTeam = listOfTopTeam.Where(t => t.goalDeficit == getTopNGoalDeficit(listOfTopTeam, listOfTopTeam.Count - 1)).ToList();
+                    listOfTopTeam = listOfTopTeam.OrderBy(t => t.numOfCard).ToList();
+                    foreach (Team t in listOfTopTeam)
+                    {
+                        if (t.numOfCard == getTopNCard(listOfTopTeam, 0))
                         {
-                            Team team = new Team();
-                            team = listOfTopTeam[i];
-                            listOfTopTeam[i] = listOfTopTeam[i + 1];
-                            listOfTopTeam[i + 1] = team;
+                            numOfTopTeam++;
+                        }
+                    }
+                    if(numOfTopTeam>1)
+                    {
+                        for(int i=0;i<listOfTopTeam.Count;i++)
+                        {
+                            for(int j=i+1;j<listOfTopTeam.Count;j++)
+                            {
+                                int confrontationScore = 0;
+                                foreach(string s in this.result)
+                                {
+                                    if(s.Contains(listOfTopTeam[i].teamName + " Win " + " vs " + listOfTopTeam[j].teamName))
+                                    {
+                                        confrontationScore++;
+                                    }
+                                    else if(s.Contains(listOfTopTeam[j].teamName + " Win " + " vs " + listOfTopTeam[i].teamName))
+                                    {
+                                        confrontationScore--;
+                                    }
+                                }
+                                if (confrontationScore < 0)
+                                {
+                                    Team team = new Team();
+                                    team = listOfTopTeam[i];
+                                    listOfTopTeam[i] = listOfTopTeam[i + 1];
+                                    listOfTopTeam[i + 1] = team;
+                                }
+                            }
                         }
                     }
                 }
             }
+
             return listOfTopTeam;
         }
+
     }
 }
