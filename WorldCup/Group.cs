@@ -37,7 +37,7 @@ namespace WorldCup
         }
         public void setTeamList()
         {
-            if (this.teamList.Count == 0)
+            if (teamList.Count == 0)
             {
                 for (int i = 0; i < 4; i++)
                 {
@@ -46,6 +46,18 @@ namespace WorldCup
                     this.teamList.Add(team);
                 }
             }
+        }
+        public bool addTeam(Team team)
+        {
+            if(this.teamList.Count==4)
+            {
+                return false;
+            }
+            else
+            {
+                this.teamList.Add(team);
+            }
+            return true;
         }
         public void setTeamCard(List<int> listCard)
         {
@@ -68,7 +80,6 @@ namespace WorldCup
         }
         public void playFirstRound()
         {
-            this.result.Clear();
             this.result.Add("Luot di vong bang " + this.groupName);
             for (int i = 0; i < 3; i++)
             {

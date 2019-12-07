@@ -651,7 +651,7 @@ namespace TestTeam
         {
             group.setGroupName("");
             string groupName = group.getGroupName();
-            Assert.IsNotNull(groupName);
+            Assert.AreNotSame("", groupName);
         }
         [TestMethod]
         public void numOfTeamListNotNegative()
